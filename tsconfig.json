@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "redux": ["node_modules/redux/index.d.ts"],
+      "redux-logic": ["node_modules/redux-logic/index.d.ts"],
+      "redux-observable": ["node_modules/redux-observable/index.d.ts"],
+      "immutable": ["node_modules/immutable/dist/immutable.d.ts"],
+      "rxjs": ["node_modules/rxjs/Rx.d.ts"],
+      "reselect": ["node_modules/reselect/src/index.d.ts"],
+      "axios": ["node_modules/axios/index.d.ts"],
+      "normalizr": ["node_modules/normalizr/index.d.ts"],
+      "antd": ["node_modules/antd/lib/index.d.ts"],
+      "antd-mobile": ["node_modules/antd-mobile/lib/index.d.ts"],
+      "mario-ducks": ["node_modules/mario-ducks/index.d.ts"],
+      "mario-utilities": ["node_modules/mario-utilities/index.d.ts"],
+      "mario-pure": ["node_modules/mario-pure/index.d.ts"],
+      "mario-functional": ["node_modules/mario-functional/index.d.ts"],
+      "mario-architecture-components": ["node_modules/mario-architecture-components/index.d.ts"],
+      "mario-extension": ["node_modules/mario-extension/index.d.ts"],
+      "styled-components": ["node_modules/styled-components/typings/styled-components.d.ts"],
+      "styled-components/native": ["node_modules/styled-components/native/index.d.ts"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-native",
+    "outDir": "./build/",
+    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "preserveConstEnums": true,
+    "allowJs": false,
+    "sourceMap": false,
+    "removeComments": true,
+    "pretty": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es5",
+      "es2015.core",
+      "es2015.iterable",
+      "es2015.collection",
+      "es2015.promise",
+      "dom"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "./src/declare"
+  ],
+  "compileOnSave": false
+}
