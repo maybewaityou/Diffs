@@ -7,10 +7,16 @@ import com.diffs.react_native.RNMainReactPackage;
 import com.diffs.react_native.RegisterPackages;
 import com.diffs.vendor.http.Volley;
 import com.facebook.react.ReactApplication;
+import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JSBundleLoader;
+import com.facebook.react.bridge.JSCJavaScriptExecutorFactory;
+import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.soloader.SoLoader;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -69,5 +75,23 @@ public class MainApplication extends Application implements ReactApplication {
     public static MainApplication getInstance() {
         return sInstance;
     }
+
+    public void reloadJSBundle(String jsBundleFilePath) {
+        ReactInstanceManager reactInstanceManager = getReactNativeHost().getReactInstanceManager();
+//        reactInstanceManager.recreateReactContextInBackground();
+        try {
+            Class<?> RIManagerClazz = reactInstanceManager.getClass();
+            Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground",
+                    JavaScriptExecutorFactory.class, JSBundleLoader.class);
+            method.setAccessible(true);
+            method.invoke(reactInstanceManager,
+                    new JSCJavaScriptExecutorFactory(),
+                    JSBundleLoader.createFileLoader(jsBundleFilePath));
+            System.out.println("==== reloadJSBundle ====");
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

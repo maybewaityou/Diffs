@@ -1,9 +1,5 @@
 package com.diffs;
 
-import android.os.Bundle;
-
-import com.diffs.constant.Constant;
-import com.diffs.utilis.NetworkUtils;
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -17,12 +13,4 @@ public class MainActivity extends ReactActivity {
         return "Diffs";
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        NetworkUtils.sendRequest(Constant.UPDATE_URL, null, response -> {
-
-        }, error -> {});
-    }
 }

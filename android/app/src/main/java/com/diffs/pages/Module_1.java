@@ -2,14 +2,24 @@ package com.diffs.pages;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.diffs.BuildConfig;
+import com.diffs.MainApplication;
+import com.diffs.constant.Constant;
+import com.diffs.utilis.NetworkUtils;
+import com.diffs.vendor.hot_update.DownloadUtil;
+import com.diffs.vendor.hot_update.HotUpdate;
+import com.diffs.vendor.hot_update.HotUpdateConfig;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.shell.MainReactPackage;
+
+import java.io.File;
 
 /**
  * Created by MeePwn on 2017/10/14.
@@ -40,6 +50,43 @@ public class Module_1 extends ReactActivity {
         mReactRootView.startReactApplication(mReactInstanceManager, "Module_1", null);
 
         setContentView(mReactRootView);
+
+        NetworkUtils.sendRequest(Constant.UPDATE_URL, null, response -> {
+
+            if (!response.optBoolean("shouldModule_1Update")) return;
+
+            // 2.更新
+            Toast.makeText(getApplicationContext(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
+            HotUpdateConfig.Builder builder = new HotUpdateConfig.Builder();
+            String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + this.getPackageName() + File.separator + "module_1";
+            HotUpdateConfig config = builder
+                    .setFirstUpdateKey("firstUpdate")
+                    .setJsBundleRemoteURL("http://192.168.1.117/bundle.zip")
+                    .setJsPatchLocalFolder(jsPatchLocalFolder)
+                    .build();
+            HotUpdate.update(this, config, new DownloadUtil.OnDownloadListener() {
+                @Override
+                public void onDownloadSuccess() {
+                    HotUpdate.handleZIP(Module_1.this, config, () -> {
+                        MainApplication.getInstance().reloadJSBundle(config.getJsBundleLocalPath());
+                        Toast.makeText(Module_1.this, "==== 更新成功 ====", Toast.LENGTH_LONG).show();
+                    });
+                }
+
+                @Override
+                public void onDownloading(int progress) {
+                    System.out.println("== progress ===>>>> " + progress);
+                }
+
+                @Override
+                public void onDownloadFailed() {
+                    Looper.prepare();
+                    Toast.makeText(Module_1.this, "==== 下载失败 ====", Toast.LENGTH_LONG).show();
+                    Looper.loop();
+                }
+            });
+
+        }, error -> {});
     }
 
 }
