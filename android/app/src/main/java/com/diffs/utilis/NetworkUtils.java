@@ -13,10 +13,13 @@ import org.json.JSONObject;
 public class NetworkUtils {
 
     public static void sendRequest(String URL, JSONObject params, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        System.out.println("== url ===>>>> " + URL);
         MainApplication.getInstance().getRequestQueue().add(new JSONRequest(URL, params, response -> {
+            System.out.println("== url ===>>>> " + URL);
             System.out.println("== response ===>>>> " + response.toString());
             listener.onResponse(response);
         }, error -> {
+            System.out.println("== url ===>>>> " + URL);
             System.out.println("== error ===>>>> " + error.toString());
             errorListener.onErrorResponse(error);
         }));

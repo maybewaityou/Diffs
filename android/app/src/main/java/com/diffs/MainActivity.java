@@ -6,8 +6,6 @@ import com.diffs.constant.Constant;
 import com.diffs.utilis.NetworkUtils;
 import com.facebook.react.ReactActivity;
 
-import org.json.JSONObject;
-
 public class MainActivity extends ReactActivity {
 
     /**
@@ -23,7 +21,7 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NetworkUtils.sendRequest(Constant.UPDATE_URL, new JSONObject(), response -> {
+        NetworkUtils.sendRequest(Constant.UPDATE_URL, null, response -> {
 
         }, error -> {});
     }
