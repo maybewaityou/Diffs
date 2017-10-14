@@ -18,4 +18,5 @@ public class Module_1 extends Activity {
         setContentView(R.layout.act_module_1);
 
     }
+
 }
