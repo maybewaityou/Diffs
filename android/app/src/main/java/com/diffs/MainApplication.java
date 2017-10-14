@@ -76,8 +76,7 @@ public class MainApplication extends Application implements ReactApplication {
         return sInstance;
     }
 
-    public void reloadJSBundle(String jsBundleFilePath) {
-        ReactInstanceManager reactInstanceManager = getReactNativeHost().getReactInstanceManager();
+    public void reloadJSBundle(ReactInstanceManager reactInstanceManager, String jsBundleFilePath) {
 //        reactInstanceManager.recreateReactContextInBackground();
         try {
             Class<?> RIManagerClazz = reactInstanceManager.getClass();

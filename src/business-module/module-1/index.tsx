@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 
 const Module_1 = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red' }}>
-    <Text style={{ color: 'white', fontSize: 25 }}>Module_1</Text>
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green' }}>
+    <Text style={{ color: 'white', fontSize: 25 }}>Module 1111111111</Text>
   </View>
 );
 

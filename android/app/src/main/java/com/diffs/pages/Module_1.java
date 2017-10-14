@@ -34,13 +34,13 @@ public class Module_1 extends ReactActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        System.out.println("== bundle path ===>>>> " + Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + "/module_1/index.bundle");
+        System.out.println("== bundle path ===>>>> " + Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + "/module_1/bundle/index.bundle");
 
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
                 .setBundleAssetName("index.bundle")
-                .setJSBundleFile(Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + "/module_1/index.bundle")
+                .setJSBundleFile(Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + "/module_1/bundle/index.bundle")
                 .setJSMainModulePath("index.android")
                 .addPackage(new MainReactPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
@@ -68,7 +68,7 @@ public class Module_1 extends ReactActivity {
                 @Override
                 public void onDownloadSuccess() {
                     HotUpdate.handleZIP(Module_1.this, config, () -> {
-                        MainApplication.getInstance().reloadJSBundle(config.getJsBundleLocalPath());
+                        MainApplication.getInstance().reloadJSBundle(mReactInstanceManager, config.getJsBundleLocalPath());
                         Toast.makeText(Module_1.this, "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                     });
                 }
