@@ -61,7 +61,7 @@ public class Module_1 extends ReactActivity {
             String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + this.getPackageName() + File.separator + "module_1";
             HotUpdateConfig config = builder
                     .setFirstUpdateKey("firstUpdate")
-                    .setJsBundleRemoteURL("http://192.168.1.117/bundle.zip")
+                    .setJsBundleRemoteURL("http://192.168.1.117/module_1/bundle.zip")
                     .setJsPatchLocalFolder(jsPatchLocalFolder)
                     .build();
             HotUpdate.update(this, config, new DownloadUtil.OnDownloadListener() {
