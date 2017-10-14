@@ -23,6 +23,8 @@ import { FavoriteNavigatorContainer, HomeNavigatorContainer, MeNavigatorContaine
 export interface IStyle {
   container: ViewStyle;
   button: ViewStyle;
+  buttonText: TextStyle;
+  margin: ViewStyle;
 
 }
 
@@ -34,30 +36,37 @@ interface IState {
 
 }
 
-export default class extends PureComponent<IProps, IState> {
-
-  public render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => {
-          console.log('--------');
-        }} style={[styles.button]}><Text>module 1</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-          console.log('=========');
-        }} style={[styles.button]}><Text>module 2</Text></TouchableOpacity>
-      </View>
-    );
-  }
-
-}
+export default (props: Readonly<IProps>) => (
+  <View style={styles.container}>
+    <TouchableOpacity onPress={() => {
+      console.log('--------');
+    }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 0</Text></TouchableOpacity>
+    <TouchableOpacity onPress={() => {
+      console.log('=========');
+    }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 1</Text></TouchableOpacity>
+  </View>
+);
 
 const styles = StyleSheet.create<IStyle>({
   container: {
-
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
-    height: 44,
+    width: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
     backgroundColor: Color.blue,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: Color.white,
+    fontSize: 25,
+  },
+  margin: {
+    margin: 30,
   },
 
 });

@@ -28,6 +28,6 @@ const store = configureApolloStore({}, apolloClient, networkClient, rootReducer,
 
 export default () => (
   <MarioProvider client={apolloClient} store={store}>
-    <TabContainer />
+    <HomeContainer />
   </MarioProvider>
 );
