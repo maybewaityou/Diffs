@@ -154,6 +154,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.4.0"
     compile "com.facebook.react:react-native:$latest_version"  // From node_modules
 
+    compile "com.android.volley:volley:$latest_version"
     compile "io.reactivex.rxjava2:rxandroid:$latest_version"
     compile "io.reactivex.rxjava2:rxjava:$latest_version"
 
