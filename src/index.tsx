@@ -13,7 +13,7 @@ import { rootEpic } from './dataflow/epic/index';
 import { rootLogic } from './dataflow/logic/index';
 import middlewares from './dataflow/middleware/index';
 import { rootReducer } from './dataflow/reducer/index';
-import { TabContainer } from './pages/index';
+import { HomeContainer, TabContainer } from './pages/index';
 
 const apolloClient = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -27,7 +27,7 @@ const networkClient = NetworkClient.getInstance();
 const store = configureApolloStore({}, apolloClient, networkClient, rootReducer, rootLogic, rootEpic, middlewares);
 
 export default () => (
-  <MarioProvider store={store} client={apolloClient}>
+  <MarioProvider client={apolloClient} store={store}>
     <TabContainer />
   </MarioProvider>
 );

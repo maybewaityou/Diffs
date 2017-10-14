@@ -7,3 +7,4 @@
  */
 
 export { default as TabContainer } from './TabContainer';
+export { default as HomeContainer } from './HomeContainer';
