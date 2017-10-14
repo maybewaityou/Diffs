@@ -18,6 +18,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { Color, Constant, Images, Style } from '../main/constant/index';
+import { JumpToNativeModule } from '../main/native-modules/index';
 import { FavoriteNavigatorContainer, HomeNavigatorContainer, MeNavigatorContainer, TrendingNavigatorContainer } from './NavigatorContainer';
 
 export interface IStyle {
@@ -38,11 +39,11 @@ interface IState {
 
 export default (props: Readonly<IProps>) => (
   <View style={styles.container}>
-    <TouchableOpacity onPress={() => {
-      console.log('--------');
+    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+      JumpToNativeModule.toActivity('com.diffs.pages.Module_0', '');
     }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 0</Text></TouchableOpacity>
-    <TouchableOpacity onPress={() => {
-      console.log('=========');
+    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+      JumpToNativeModule.toActivity('com.diffs.pages.Module_1', '');
     }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 1</Text></TouchableOpacity>
   </View>
 );
