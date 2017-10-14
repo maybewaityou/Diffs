@@ -1,0 +1,13 @@
+{
+  "genBundle": {
+    "type": "",
+    "platform": "android",
+    "entryFile": "",
+    "output": ""
+  },
+  "diffs": {
+    "local": "",
+    "remote": "",
+    "dpi": "xhdpi"
+  }
+}
