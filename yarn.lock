@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@types/debug@0.0.30":
+"@types/debug@^0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
 
@@ -10,23 +10,28 @@
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.10.2.tgz#d7c79acbaa17453b6681c80c34b38fcb10c4c08c"
 
-"@types/lodash@^4.14.71":
+"@types/lodash@^4.14.77":
   version "4.14.77"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.77.tgz#0bc699413e84d6ed5d927ca30ea0f0a890b42d75"
 
-"@types/prop-types@^15.5.1":
+"@types/node@*":
+  version "8.0.34"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.34.tgz#55f801fa2ddb2a40dd6dfc15ecfe1dde9c129fe9"
+
+"@types/prop-types@^15.5.2":
   version "15.5.2"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.2.tgz#3c6b8dceb2906cc87fe4358e809f9d20c8d59be1"
 
-"@types/ramda@^0.24.6":
+"@types/ramda@^0.24.17":
   version "0.24.17"
   resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.24.17.tgz#9a399c69d102588dea1c6817e4401e8fa780e40b"
 
-"@types/react-dom@^15.5.2":
-  version "15.5.6"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.6.tgz#7794ff7822882b59b899c30294e1b1e62e97757e"
+"@types/react-dom@^16.0.1":
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.1.tgz#de159d00dd70050000f462e8bcff0c08ef803dee"
   dependencies:
-    "@types/react" "^15"
+    "@types/node" "*"
+    "@types/react" "*"
 
 "@types/react-native-tab-navigator@^0.3.0":
   version "0.3.0"
@@ -35,47 +40,37 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*":
+"@types/react-native@*", "@types/react-native@^0.49.2":
   version "0.49.2"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.49.2.tgz#e2c1a7ba6bdf880201e8fa3bb7eddc3cead3a579"
   dependencies:
     "@types/react" "*"
 
-"@types/react-native@^0.47.0":
-  version "0.47.9"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.47.9.tgz#7e7f3d8d25c46e8b6e8ad3b11d0222de0722f820"
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-navigation@^1.0.19":
+"@types/react-navigation@^1.0.21":
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.0.21.tgz#b997a41a435efee375e0079a9a738c7dad99dc6e"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-redux@^4.4.47":
-  version "4.4.47"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-4.4.47.tgz#12af1677116e08d413fe2620d0a85560c8a0536e"
+"@types/react-redux@^5.0.10":
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.10.tgz#f5c45a349f759d87d6b1f2aa096a756561a6d5c9"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react@*", "@types/react@^16.0.0":
+"@types/react@*", "@types/react@^16.0.10":
   version "16.0.10"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.10.tgz#a24b630f5f1f170866a148a147d4fc8636ea88e0"
 
-"@types/react@^15":
-  version "15.6.4"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.4.tgz#3bb57bd43183a05919ceb025a264287348f47e9d"
-
-"@types/recompose@^0.23.3":
-  version "0.23.3"
-  resolved "https://registry.yarnpkg.com/@types/recompose/-/recompose-0.23.3.tgz#63134a58cc51526b850fe995debdf28cc5166808"
+"@types/recompose@^0.24.2":
+  version "0.24.2"
+  resolved "https://registry.yarnpkg.com/@types/recompose/-/recompose-0.24.2.tgz#642c136c3d421b315d48b5c39d66e4e93174c600"
   dependencies:
     "@types/react" "*"
 
-"@types/underscore@^1.8.1":
+"@types/underscore@^1.8.3":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.3.tgz#d3cb512dd3dde32b2bbba4be0ca68bd3dad4a1f5"
 
