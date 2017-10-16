@@ -60,7 +60,7 @@ const styles = StyleSheet.create<IStyle>({
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
-    backgroundColor: Color.red,
+    backgroundColor: Color.lightBlue,
     borderRadius: 10,
   },
   buttonText: {
