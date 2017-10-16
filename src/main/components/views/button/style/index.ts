@@ -5,9 +5,14 @@
  * description:
  *
  */
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-export default StyleSheet.create<any>({
+export interface IButtonStyle {
+  container: ViewStyle;
+  title: TextStyle;
+}
+
+export default StyleSheet.create<IButtonStyle>({
   container: {
     height: 44,
     backgroundColor: 'blue',

@@ -17,6 +17,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { Button } from '../main/components/index';
 import { Color, Constant, Images, Style } from '../main/constant/index';
 import { JumpToNativeModule } from '../main/native-modules/index';
 import { FavoriteNavigatorContainer, HomeNavigatorContainer, MeNavigatorContainer, TrendingNavigatorContainer } from './NavigatorContainer';
@@ -39,12 +40,12 @@ interface IState {
 
 export default (props: Readonly<IProps>) => (
   <View style={styles.container}>
-    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+    <Button title="module 0" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
       JumpToNativeModule.toActivity('com.diffs.pages.Module_0', '');
-    }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 0</Text></TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.8} onPress={() => {
+    }} />
+    <Button title="module 1" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
       JumpToNativeModule.toActivity('com.diffs.pages.Module_1', '');
-    }} style={[styles.button, styles.margin]}><Text style={styles.buttonText}>module 1</Text></TouchableOpacity>
+    }}/>
   </View>
 );
 
@@ -59,7 +60,7 @@ const styles = StyleSheet.create<IStyle>({
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
-    backgroundColor: Color.blue,
+    backgroundColor: Color.red,
     borderRadius: 10,
   },
   buttonText: {

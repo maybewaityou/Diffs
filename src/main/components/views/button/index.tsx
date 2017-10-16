@@ -14,9 +14,10 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { IButtonProps } from './PropsType';
 import styles from './style/index';
 
-export default (props: Readonly<any>) => (
+export default (props: Readonly<IButtonProps>) => (
   <TouchableOpacity activeOpacity={0.8} style={[styles.container, props.style]} onPress={props.onPress}>
     <Text style={[styles.title, props.titleStyle]}>{props.title}</Text>
   </TouchableOpacity>
