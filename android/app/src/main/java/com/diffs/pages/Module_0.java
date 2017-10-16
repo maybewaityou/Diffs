@@ -57,7 +57,10 @@ public class Module_0 extends ReactActivity {
             float nativeVersion = SharedPreferencesUtils.getFloat(Module_0.this, "module_0_version");
             System.out.println("== newVersion ===>>>> " + newVersion);
             System.out.println("== nativeVersion ===>>>> " + nativeVersion);
-            if (newVersion <= nativeVersion) return;
+            if (newVersion <= nativeVersion) {
+                Toast.makeText(getApplicationContext(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
+                return;
+            }
 
             // 2.更新
             Toast.makeText(getApplicationContext(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
