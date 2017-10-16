@@ -10,6 +10,7 @@ import com.diffs.BuildConfig;
 import com.diffs.MainApplication;
 import com.diffs.constant.Constant;
 import com.diffs.utilis.NetworkUtils;
+import com.diffs.utilis.SharedPreferencesUtils;
 import com.diffs.vendor.hot_update.DownloadUtil;
 import com.diffs.vendor.hot_update.HotUpdate;
 import com.diffs.vendor.hot_update.HotUpdateConfig;
@@ -52,8 +53,11 @@ public class Module_1 extends ReactActivity {
         setContentView(mReactRootView);
 
         NetworkUtils.sendRequest(Constant.UPDATE_URL, null, response -> {
-
-            if (!response.optBoolean("shouldModule_1Update")) return;
+            float newVersion = (float) response.optDouble("module_1_version");
+            float nativeVersion = SharedPreferencesUtils.getFloat(Module_1.this, "module_1_version");
+            System.out.println("== newVersion ===>>>> " + newVersion);
+            System.out.println("== nativeVersion ===>>>> " + nativeVersion);
+            if (newVersion <= nativeVersion) return;
 
             // 2.更新
             Toast.makeText(getApplicationContext(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
@@ -68,6 +72,7 @@ public class Module_1 extends ReactActivity {
                 @Override
                 public void onDownloadSuccess() {
                     HotUpdate.handleZIP(Module_1.this, config, () -> {
+                        SharedPreferencesUtils.putFloat(Module_1.this, "module_1_version", newVersion);
                         MainApplication.getInstance().reloadJSBundle(mReactInstanceManager, config.getJsBundleLocalPath());
                         Toast.makeText(Module_1.this, "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                     });
@@ -86,7 +91,8 @@ public class Module_1 extends ReactActivity {
                 }
             });
 
-        }, error -> {});
+        }, error -> {
+        });
     }
 
 }
