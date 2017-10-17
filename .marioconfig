@@ -1,0 +1,7 @@
+#!/bin/sh
+
+_platform=android
+
+_local=local
+_remote=remote
+_module=module

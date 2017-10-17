@@ -17,9 +17,10 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Button } from '../main/components/index';
+import { Button, Square } from '../main/components/index';
 import { Color, Constant, Images, Style } from '../main/constant/index';
 import { JumpToNativeModule } from '../main/native-modules/index';
+import SubViews from './components/SubViews';
 import { FavoriteNavigatorContainer, HomeNavigatorContainer, MeNavigatorContainer, TrendingNavigatorContainer } from './NavigatorContainer';
 
 export interface IStyle {
@@ -40,35 +41,31 @@ interface IState {
 
 export default (props: Readonly<IProps>) => (
   <View style={styles.container}>
-    <Button title="module 0" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
-      JumpToNativeModule.toActivity('com.diffs.pages.Module_0', '');
-    }} />
-    <Button title="module 1" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
-      JumpToNativeModule.toActivity('com.diffs.pages.Module_1', '');
-    }}/>
+    <SubViews title="业务应用" >
+      <Square source={Images.icon} title="移动营销服务平台" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+        JumpToNativeModule.toActivity('com.diffs.pages.Module_0', '');
+      }} />
+      <Square source={Images.icon} title="信用卡" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+        JumpToNativeModule.toActivity('com.diffs.pages.Module_1', '');
+      }}/>
+    </SubViews>
   </View>
 );
 
 const styles = StyleSheet.create<IStyle>({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   button: {
-    width: 300,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    backgroundColor: Color.lightBlue,
     borderRadius: 10,
   },
   buttonText: {
-    color: Color.white,
-    fontSize: 25,
+    fontSize: 15,
   },
   margin: {
-    margin: 30,
+    marginLeft: 30,
   },
 
 });

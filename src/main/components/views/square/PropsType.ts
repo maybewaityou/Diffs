@@ -5,15 +5,17 @@
  * description:
  *
  */
-import { TextStyle, ViewStyle } from 'react-native';
+import { ImageRequireSource, ImageStyle, ImageURISource, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-export interface IButtonProps {
-  title: string;
-  style: ViewStyle;
-  titleStyle: TextStyle;
-  onPress: (x?: any) => void;
+export interface ISquareProps {
+  source?: ImageURISource | ImageURISource[] | ImageRequireSource;
+  title?: string;
+  style?: StyleProp<ViewStyle>;
+  imageStyle?: StyleProp<ImageStyle>;
+  titleStyle?: StyleProp<TextStyle>;
+  onPress?: (x?: any) => void;
 }
 
-export interface IButtonState {
+export interface ISquareProps {
 
 }

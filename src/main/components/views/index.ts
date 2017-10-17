@@ -7,3 +7,4 @@
  */
 
 export { default as Button } from './button/index';
+export { default as Square } from './square/index';
