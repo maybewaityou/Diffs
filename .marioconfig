@@ -4,7 +4,7 @@ declare -A _moduleEntryFile
 # 打包平台
 _platform=android
 
-# 打包文件
+# 默认打包文件
 _entryFile=index.js
 
 # 打包module文件
