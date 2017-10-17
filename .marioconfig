@@ -13,4 +13,3 @@ _moduleEntryFile=([main]=$_entryFile [module_0]="build/business-module/module_0/
 # 输出文件目录
 _local=local
 _remote=remote
-_module=module
