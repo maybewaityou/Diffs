@@ -1,10 +1,14 @@
-#!/bin/sh
+#!/usr/local/bin/bash
+declare -A _moduleEntryFile
 
 # 打包平台
 _platform=android
 
 # 打包文件
 _entryFile=index.js
+
+# 打包module文件
+_moduleEntryFile=([main]=$_entryFile [module_0]="build/business-module/module_0/$_entryFile" [module_1]="build/business-module/module_1/$_entryFile")
 
 # 输出文件目录
 _local=local
