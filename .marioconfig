@@ -2,6 +2,9 @@
 
 _platform=android
 
+_entryFile=index.js
+
+
 _local=local
 _remote=remote
 _module=module
