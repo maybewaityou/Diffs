@@ -1,10 +1,12 @@
 #!/bin/sh
 
+# 打包平台
 _platform=android
 
+# 打包文件
 _entryFile=index.js
 
-
+# 输出文件目录
 _local=local
 _remote=remote
 _module=module
