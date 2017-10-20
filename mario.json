@@ -1,13 +1,11 @@
 {
-  "genBundle": {
-    "type": "",
-    "platform": "android",
-    "entryFile": "",
-    "output": ""
-  },
-  "diffs": {
-    "local": "",
-    "remote": "",
-    "dpi": "xhdpi"
-  }
+  "platform": "android",
+  "entryFile": "index.js",
+  "modulePath": "build/business-module",
+  "modules": [
+    "module-0",
+    "module-1"
+  ],
+  "local": "local",
+  "remote": "remote"
 }
