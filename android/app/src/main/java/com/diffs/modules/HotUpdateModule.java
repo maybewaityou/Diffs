@@ -4,7 +4,7 @@ import android.os.Environment;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.diffs.MainApplication;
+import com.diffs.pages.ModuleContainer;
 import com.diffs.utilis.NetworkUtils;
 import com.diffs.utilis.SharedPreferencesUtils;
 import com.diffs.vendor.hot_update.DownloadUtil;
@@ -58,7 +58,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                 public void onDownloadSuccess() {
                     HotUpdate.handleZIP(getReactApplicationContext(), config, () -> {
                         SharedPreferencesUtils.putFloat(getReactApplicationContext(), params.getString("moduleVersionKey"), newVersion);
-                        MainApplication.getInstance().reloadJSBundle();
+                        ((ModuleContainer) getCurrentActivity()).refresh(config);
                         Toast.makeText(getReactApplicationContext(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                         success.invoke("{}");
                     });

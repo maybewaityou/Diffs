@@ -5,7 +5,9 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 
 import com.diffs.BuildConfig;
+import com.diffs.MainApplication;
 import com.diffs.react_native.RegisterPackages;
+import com.diffs.vendor.hot_update.HotUpdateConfig;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -45,6 +47,10 @@ public class ModuleContainer extends ReactActivity {
         mReactRootView.startReactApplication(mReactInstanceManager, paramsMap.get("moduleName"), null);
 
         setContentView(mReactRootView);
+    }
+
+    public void refresh(HotUpdateConfig config) {
+        MainApplication.getInstance().refresh(this.mReactInstanceManager, config.getJsBundleLocalPath());
     }
 
 }
