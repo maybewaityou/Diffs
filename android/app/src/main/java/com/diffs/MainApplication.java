@@ -76,8 +76,11 @@ public class MainApplication extends Application implements ReactApplication {
         return sInstance;
     }
 
+    public void reloadJSBundle() {
+        getReactNativeHost().getReactInstanceManager().recreateReactContextInBackground();
+    }
+
     public void reloadJSBundle(ReactInstanceManager reactInstanceManager, String jsBundleFilePath) {
-//        reactInstanceManager.recreateReactContextInBackground();
         try {
             Class<?> RIManagerClazz = reactInstanceManager.getClass();
             Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground",
@@ -86,7 +89,6 @@ public class MainApplication extends Application implements ReactApplication {
             method.invoke(reactInstanceManager,
                     new JSCJavaScriptExecutorFactory(),
                     JSBundleLoader.createFileLoader(jsBundleFilePath));
-            System.out.println("==== reloadJSBundle ====");
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | IllegalArgumentException e) {
             e.printStackTrace();
         }

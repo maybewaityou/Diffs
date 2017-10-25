@@ -30,64 +30,70 @@ export interface IStyle {
 
 }
 
-const Module_1 = () => (
-  <View style={styles.container}>
-    <LeftMenu />
-    <View style={{ flex: 1 }}>
-      <SubViews title="商户营销">
-        <Square source={Images.shxxlrIcon} title="商户信息录入" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+class Module1 extends React.Component<any, any> {
 
-        }} />
-        <Square source={Images.tjx1Icon} title="退件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+  public render() {
+    return (
+      <View style={styles.container}>
+        <LeftMenu />
+        <View style={{ flex: 1 }}>
+          <SubViews title="商户营销">
+            <Square source={Images.shxxlrIcon} title="商户信息录入" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.cgx1Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.tjx1Icon} title="退件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.shcxIcon} title="核准箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.cgx1Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-      </SubViews>
-      <SubViews title="信用卡分期">
-        <Square source={Images.fqsqIcon} title="信用卡分期申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.shcxIcon} title="核准箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.fqysIcon} title="信用卡分期预审" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+          </SubViews>
+          <SubViews title="信用卡分期">
+            <Square source={Images.fqsqIcon} title="信用卡分期申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.fqjdIcon} title="分期进度查询" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.fqysIcon} title="信用卡分期预审" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.bjx1Icon} title="补件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.fqjdIcon} title="分期进度查询" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.cgx2Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.bjx1Icon} title="补件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-      </SubViews>
-      <SubViews title="信用卡发卡">
-        <Square source={Images.xyksqIcon} title="信用单卡申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.cgx2Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.tbsqIcon} title="信用卡团办申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+          </SubViews>
+          <SubViews title="信用卡发卡">
+            <Square source={Images.xyksqIcon} title="信用单卡申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.fsksqIcon} title="附属卡申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.tbsqIcon} title="信用卡团办申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.tbIcon} title="团办查询" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.fsksqIcon} title="附属卡申请" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.bjx2Icon} title="补件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.tbIcon} title="团办查询" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-        <Square source={Images.cgx2Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+            }} />
+            <Square source={Images.bjx2Icon} title="补件箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
 
-        }} />
-      </SubViews>
-    </View>
-  </View>
-);
+            }} />
+            <Square source={Images.cgx2Icon} title="草稿箱" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
+
+            }} />
+          </SubViews>
+        </View>
+      </View>
+    );
+  }
+
+}
 
 const styles = StyleSheet.create<IStyle>({
   container: {
@@ -108,4 +114,4 @@ const styles = StyleSheet.create<IStyle>({
 
 });
 
-AppRegistry.registerComponent('Module_1', () => Module_1);
+AppRegistry.registerComponent('Module_1', () => Module1);

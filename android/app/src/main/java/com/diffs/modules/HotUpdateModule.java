@@ -4,6 +4,7 @@ import android.os.Environment;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.diffs.MainApplication;
 import com.diffs.utilis.NetworkUtils;
 import com.diffs.utilis.SharedPreferencesUtils;
 import com.diffs.vendor.hot_update.DownloadUtil;
@@ -46,7 +47,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
             // 2.更新
             Toast.makeText(getCurrentActivity(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
             HotUpdateConfig.Builder builder = new HotUpdateConfig.Builder();
-            String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + getCurrentActivity().getPackageName() + File.separator + moduleName.toLowerCase();
+            String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + getCurrentActivity().getPackageName() + File.separator + moduleName;
             HotUpdateConfig config = builder
                     .setFirstUpdateKey(params.getString("firstUpdateKey"))
                     .setJsBundleRemoteURL(params.getString("jsBundleRemoteURL"))
@@ -57,7 +58,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                 public void onDownloadSuccess() {
                     HotUpdate.handleZIP(getCurrentActivity(), config, () -> {
                         SharedPreferencesUtils.putFloat(getCurrentActivity(), params.getString("moduleVersionKey"), newVersion);
-//                        MainApplication.getInstance().reloadJSBundle(mReactInstanceManager, config.getJsBundleLocalPath());
+                        MainApplication.getInstance().reloadJSBundle();
                         Toast.makeText(getCurrentActivity(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                     });
                 }
