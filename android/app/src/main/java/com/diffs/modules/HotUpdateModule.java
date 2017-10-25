@@ -37,29 +37,29 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
     public void update(String moduleName, String updateURL, ReadableMap params, Callback success, Callback failure) {
         NetworkUtils.sendRequest(updateURL, null, response -> {
             float newVersion = (float) response.optDouble(params.getString("moduleVersionKey"));
-            float nativeVersion = SharedPreferencesUtils.getFloat(getCurrentActivity(), params.getString("moduleVersionKey"), 1);
+            float nativeVersion = SharedPreferencesUtils.getFloat(getReactApplicationContext(), params.getString("moduleVersionKey"), 1);
             if (newVersion <= nativeVersion) {
-                Toast.makeText(getCurrentActivity(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
+                Toast.makeText(getReactApplicationContext(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
                 success.invoke(response.toString());
                 return;
             }
 
             // 2.更新
-            Toast.makeText(getCurrentActivity(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
+            Toast.makeText(getReactApplicationContext(), "==== 开始下载 ====", Toast.LENGTH_LONG).show();
             HotUpdateConfig.Builder builder = new HotUpdateConfig.Builder();
-            String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + getCurrentActivity().getPackageName() + File.separator + moduleName;
+            String jsPatchLocalFolder = Environment.getExternalStorageDirectory().toString() + File.separator + getReactApplicationContext().getPackageName() + File.separator + moduleName;
             HotUpdateConfig config = builder
                     .setFirstUpdateKey(params.getString("firstUpdateKey"))
                     .setJsBundleRemoteURL(params.getString("jsBundleRemoteURL"))
                     .setJsPatchLocalFolder(jsPatchLocalFolder)
                     .build();
-            HotUpdate.update(getCurrentActivity(), config, new DownloadUtil.OnDownloadListener() {
+            HotUpdate.update(getReactApplicationContext(), config, new DownloadUtil.OnDownloadListener() {
                 @Override
                 public void onDownloadSuccess() {
-                    HotUpdate.handleZIP(getCurrentActivity(), config, () -> {
-                        SharedPreferencesUtils.putFloat(getCurrentActivity(), params.getString("moduleVersionKey"), newVersion);
+                    HotUpdate.handleZIP(getReactApplicationContext(), config, () -> {
+                        SharedPreferencesUtils.putFloat(getReactApplicationContext(), params.getString("moduleVersionKey"), newVersion);
                         MainApplication.getInstance().reloadJSBundle();
-                        Toast.makeText(getCurrentActivity(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getReactApplicationContext(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                         success.invoke("{}");
                     });
                 }
@@ -72,7 +72,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                 @Override
                 public void onDownloadFailed() {
                     Looper.prepare();
-                    Toast.makeText(getCurrentActivity(), "==== 下载失败 ====", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getReactApplicationContext(), "==== 下载失败 ====", Toast.LENGTH_LONG).show();
                     Looper.loop();
                 }
             });
