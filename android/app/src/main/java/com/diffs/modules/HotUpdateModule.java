@@ -40,7 +40,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
             float nativeVersion = SharedPreferencesUtils.getFloat(getCurrentActivity(), params.getString("moduleVersionKey"), 1);
             if (newVersion <= nativeVersion) {
                 Toast.makeText(getCurrentActivity(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
-                success.invoke(response);
+                success.invoke(response.toString());
                 return;
             }
 
@@ -60,6 +60,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                         SharedPreferencesUtils.putFloat(getCurrentActivity(), params.getString("moduleVersionKey"), newVersion);
                         MainApplication.getInstance().reloadJSBundle();
                         Toast.makeText(getCurrentActivity(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
+                        success.invoke("{}");
                     });
                 }
 
@@ -75,7 +76,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                     Looper.loop();
                 }
             });
-        }, failure::invoke);
+        }, error -> failure.invoke(error.toString()));
     }
 
 }
