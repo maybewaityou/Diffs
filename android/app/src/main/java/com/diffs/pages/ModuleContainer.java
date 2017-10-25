@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 
 import com.diffs.BuildConfig;
+import com.diffs.react_native.RegisterPackages;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -28,7 +29,6 @@ public class ModuleContainer extends ReactActivity {
         super.onCreate(savedInstanceState);
 
         HashMap<String, String> paramsMap = (HashMap<String, String>) getIntent().getSerializableExtra("params");
-        System.out.println("== paramsMap ===>>>> " + paramsMap);
 
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
@@ -37,6 +37,7 @@ public class ModuleContainer extends ReactActivity {
                 .setJSBundleFile(Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + paramsMap.get("jsBundleFile"))
                 .setJSMainModulePath("index.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new RegisterPackages())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
