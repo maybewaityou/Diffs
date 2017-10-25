@@ -37,7 +37,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
     public void update(String moduleName, String updateURL, ReadableMap params, Callback success, Callback failure) {
         NetworkUtils.sendRequest(updateURL, null, response -> {
             float newVersion = (float) response.optDouble(params.getString("moduleVersionKey"));
-            float nativeVersion = SharedPreferencesUtils.getFloat(getCurrentActivity(), params.getString("moduleVersionKey"));
+            float nativeVersion = SharedPreferencesUtils.getFloat(getCurrentActivity(), params.getString("moduleVersionKey"), 1);
             if (newVersion <= nativeVersion) {
                 Toast.makeText(getCurrentActivity(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
                 success.invoke(response);
