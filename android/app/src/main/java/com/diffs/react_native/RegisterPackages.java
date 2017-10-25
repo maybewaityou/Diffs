@@ -1,6 +1,8 @@
 package com.diffs.react_native;
 
+import com.diffs.modules.HotUpdateModule;
 import com.diffs.modules.JumpToNativeModule;
+import com.diffs.modules.NetworkModule;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -31,6 +33,8 @@ public class RegisterPackages implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new JumpToNativeModule(reactContext));
+        modules.add(new HotUpdateModule(reactContext));
+        modules.add(new NetworkModule(reactContext));
 
         return modules;
     }

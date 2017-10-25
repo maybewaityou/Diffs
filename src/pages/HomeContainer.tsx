@@ -43,7 +43,10 @@ export default (props: Readonly<IProps>) => (
   <View style={styles.container}>
     <SubViews title="业务应用" >
       <Square source={Images.icon} title="移动营销服务平台" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
-        JumpToNativeModule.toActivity('com.diffs.pages.Module_0', '');
+        JumpToNativeModule.toActivity('com.diffs.pages.Module_0', {
+          jsBundleFile: '/module_0/bundle/index.bundle',
+          moduleName: 'module_0',
+        });
       }} />
       <Square source={Images.icon} title="信用卡" style={[styles.button, styles.margin]} titleStyle={styles.buttonText} onPress={() => {
         JumpToNativeModule.toActivity('com.diffs.pages.Module_1', '');

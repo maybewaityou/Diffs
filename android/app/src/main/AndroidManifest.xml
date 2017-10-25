@@ -32,8 +32,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".pages.Module_0" />
-        <activity android:name=".pages.Module_1" />
+        <activity android:name=".pages.ModuleContainer" />
 
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 

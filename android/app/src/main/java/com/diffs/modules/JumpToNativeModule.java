@@ -9,6 +9,7 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -40,12 +41,12 @@ public class JumpToNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void toActivity(String activityName, String params) {
+    public void toActivity(String activityName, ReadableMap params) {
         try {
             Activity currentActivity = getCurrentActivity();
             if (currentActivity != null) {
                 Intent intent = new Intent(currentActivity, Class.forName(activityName));
-                intent.putExtra("params", params);
+                intent.putExtra("params", params.toHashMap());
                 currentActivity.startActivity(intent);
             }
         } catch (ClassNotFoundException e) {
