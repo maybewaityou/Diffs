@@ -65,7 +65,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
 
                 @Override
                 public void onDownloading(int progress) {
-                    System.out.println("== progress ===>>>> " + progress);
+
                 }
 
                 @Override
