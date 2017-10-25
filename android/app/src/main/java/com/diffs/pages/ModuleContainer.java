@@ -50,8 +50,8 @@ public class ModuleContainer extends ReactActivity {
         setContentView(mReactRootView);
     }
 
-    public void refresh(HotUpdateConfig config) {
-        MainApplication.getInstance().refresh(this.mReactInstanceManager, config.getJsBundleLocalPath());
+    public void reloadJSBundle(HotUpdateConfig config) {
+        MainApplication.getInstance().reloadJSBundle(this.mReactInstanceManager, config.getJsBundleLocalPath());
     }
 
 }

@@ -76,7 +76,7 @@ public class MainApplication extends Application implements ReactApplication {
         return sInstance;
     }
 
-    public void refresh(ReactInstanceManager reactInstanceManager, String jsBundleFilePath) {
+    public void reloadJSBundle(ReactInstanceManager reactInstanceManager, String jsBundleFilePath) {
         try {
             Class<?> RIManagerClazz = reactInstanceManager.getClass();
             Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground", JavaScriptExecutorFactory.class, JSBundleLoader.class);

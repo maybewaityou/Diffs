@@ -57,7 +57,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                 public void onDownloadSuccess() {
                     HotUpdate.handleZIP(getCurrentActivity(), config, () -> {
                         SharedPreferencesUtils.putFloat(getCurrentActivity(), params.getString("moduleVersionKey"), newVersion);
-                        ((ModuleContainer) getCurrentActivity()).refresh(config);
+                        ((ModuleContainer) getCurrentActivity()).reloadJSBundle(config);
                         Toast.makeText(getCurrentActivity(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
                         success.invoke("{}");
                     });
