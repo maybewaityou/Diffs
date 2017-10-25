@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import { Square } from '../../main/components/index';
 import { Images } from '../../main/constant/index';
+import { HotUpdateModule } from '../../main/native-modules/index';
 import LeftMenu from '../../pages/components/LeftMenu';
 import SubViews from '../../pages/components/SubViews';
 
@@ -30,7 +31,21 @@ export interface IStyle {
 
 }
 
+const moduleName = 'Module_1';
+
 class Module1 extends React.Component<any, any> {
+
+  public componentDidMount() {
+    HotUpdateModule.update(moduleName, 'http://192.168.1.117/api/checkForUpdates', {
+      moduleVersionKey: 'module_1_version',
+      firstUpdateKey: 'firstUpdateKey',
+      jsBundleRemoteURL: 'http://192.168.1.117/module_1/bundle.zip',
+    }, (response: any) => {
+
+    }, (error: any) => {
+
+    });
+  }
 
   public render() {
     return (
@@ -114,4 +129,4 @@ const styles = StyleSheet.create<IStyle>({
 
 });
 
-AppRegistry.registerComponent('Module_1', () => Module1);
+AppRegistry.registerComponent(moduleName, () => Module1);
