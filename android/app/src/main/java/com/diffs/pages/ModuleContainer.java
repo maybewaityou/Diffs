@@ -42,6 +42,7 @@ public class ModuleContainer extends ReactActivity {
                 .addPackage(new RegisterPackages())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
+                .setCurrentActivity(this)
                 .build();
 
         mReactRootView.startReactApplication(mReactInstanceManager, paramsMap.get("moduleName"), null);
