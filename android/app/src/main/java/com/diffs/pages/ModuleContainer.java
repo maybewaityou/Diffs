@@ -28,7 +28,6 @@ public class ModuleContainer extends ReactActivity {
         super.onCreate(savedInstanceState);
 
         HashMap<String, String> paramsMap = (HashMap<String, String>) getIntent().getSerializableExtra("params");
-        System.out.println("== bundle path ===>>>> " + Environment.getExternalStorageDirectory().getPath() + "/" + this.getPackageName() + "/module_0/bundle/index.bundle");
 
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()

@@ -36,7 +36,7 @@ const moduleName = 'Module_1';
 class Module1 extends React.Component<any, any> {
 
   public componentDidMount() {
-    HotUpdateModule.update(moduleName, 'http://192.168.1.117/api/checkForUpdates', {
+    HotUpdateModule.update(moduleName.toLowerCase(), 'http://192.168.1.117/api/checkForUpdates', {
       moduleVersionKey: 'module_1_version',
       firstUpdateKey: 'firstUpdateKey',
       jsBundleRemoteURL: 'http://192.168.1.117/module_1/bundle.zip',

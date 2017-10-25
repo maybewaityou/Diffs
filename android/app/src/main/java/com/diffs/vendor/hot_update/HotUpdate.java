@@ -28,8 +28,6 @@ public class HotUpdate {
     }
 
     public static void update(Context context, HotUpdateConfig config, DownloadUtil.OnDownloadListener listener) {
-        System.out.println("== config ===>>>> " + config);
-
         genPackageFolder(config);
         // 下载更新包
         DownLoad.getInstance().downLoadBundle(context, config, listener);
@@ -52,13 +50,11 @@ public class HotUpdate {
         Flowable.create(s -> {
             boolean result = (Boolean) ACache.get(context).getAsObject(config.getFirstUpdateKey());
             if (result) {
-                System.out.println("== zip path ===>>>> " + config.getJsPatchLocalFolder());
                 // 解压到根目录
                 FileUtils.decompression(config.getJsPatchLocalFolder(), config.getJsPatchLocalPath());
                 // 合并
                 mergePatAndAsset(context, config);
             } else {
-                System.out.println("== zip path ===>>>> " + config.getFutureJSPatchLocalFolder());
                 // 解压到future目录
                 FileUtils.decompression(config.getFutureJSPatchLocalFolder(), config.getJsPatchLocalPath());
                 // 合并
@@ -84,13 +80,9 @@ public class HotUpdate {
         // 2.解析bundle当前目录下.pat文件字符串
         String patchStr = FileUtils.getStringFromPat(config.getJsPatchLocalFile());
         // 3.合并
-        System.out.println("== 合并 start ==");
         merge(patchStr, assetsBundle, config);
-        System.out.println("== 合并 end ==");
         // 4.删除pat
-        System.out.println("== 删除pat start ==");
         FileUtils.deleteFile(config.getJsPatchLocalFile());
-        System.out.println("== 删除pat end ==");
     }
 
     /**
@@ -103,18 +95,12 @@ public class HotUpdate {
         // 2.解析最新下发的.pat文件字符串
         String patchStr = FileUtils.getStringFromPat(config.getFuturePatPath());
         // 3.合并
-        System.out.println("== 合并 start ==");
         merge(patchStr, assetsBundle, config);
-        System.out.println("== 合并 end ==");
         // 4.添加图片
-        System.out.println("== 添加图片 start ==");
         FileUtils.copyPatchImgs(config.getFutureDrawablePath(), config.getDrawablePath());
         FileUtils.copyPatchImgs(config.getFutureXHDrawablePath(), config.getXhDrawablePath());
-        System.out.println("== 添加图片 end ==");
         // 5.删除本次下发的更新文件
-        System.out.println("== 删除下发的文件 start ==");
         FileUtils.traversalFile(config.getFutureJSPatchLocalFolder());
-        System.out.println("== 删除下发的文件 end ==");
     }
 
     /**
@@ -129,22 +115,13 @@ public class HotUpdate {
         // 5.pat与bundle合并，生成新的bundle
         Object[] bundleArray = dmp.patch_apply(patches, bundle);
         // 6.保存新的bundle文件
-        System.out.println("== patchStr length ===>>>> " + patchStr.length());
         try {
             FileOutputStream outStream = new FileOutputStream(new File(config.getJsBundleLocalPath()));
             String newBundle = (String) bundleArray[0];
-            System.out.println("== oldBundle ===>>>> " + bundle.length());
-            System.out.println("== newBundle ===>>>> " + newBundle.length());
             outStream.write(newBundle.getBytes());
-            System.out.println("== writer.write ===>>>> ");
             outStream.close();
-            System.out.println("== writer.close ===>>>> ");
         } catch (IOException e) {
-            System.out.println("== e ===>>>> " + e);
-            System.out.println("== e getMessage ===>>>> " + e.getMessage());
-            System.out.println("== e getLocalizedMessage ===>>>> " + e.getLocalizedMessage());
             e.printStackTrace();
         }
-        System.out.println("== writer ===>>>> ");
     }
 }
