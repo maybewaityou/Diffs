@@ -119,4 +119,4 @@ const styles = StyleSheet.create<IStyle>({
 
 });
 
-AppRegistry.registerComponent(moduleName, () => Module0);
+AppRegistry.registerComponent('Module_0', () => Module0);

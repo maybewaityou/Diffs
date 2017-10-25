@@ -28,6 +28,7 @@ public class ModuleContainer extends ReactActivity {
         super.onCreate(savedInstanceState);
 
         HashMap<String, String> paramsMap = (HashMap<String, String>) getIntent().getSerializableExtra("params");
+        System.out.println("== paramsMap ===>>>> " + paramsMap);
 
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
