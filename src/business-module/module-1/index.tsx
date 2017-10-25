@@ -40,7 +40,6 @@ class Module1 extends React.Component<any, any> {
       moduleVersionKey: 'module_1_version',
       firstUpdateKey: 'firstUpdateKey',
       jsBundleRemoteURL: 'http://192.168.1.117/module_1/bundle.zip',
-      activityName: 'com.diffs.pages.ModuleContainer',
     }, (response: any) => {
 
     }, (error: any) => {
