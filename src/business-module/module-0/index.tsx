@@ -35,12 +35,16 @@ const moduleName = 'Module_0';
 
 class Module0 extends React.Component<any, any> {
 
-  public componentDidMount() {
-    HotUpdateModule.update(moduleName.toLowerCase(), 'http://192.168.1.117/api/checkForUpdates', {
-      moduleVersionKey: 'module_0_version',
-      firstUpdateKey: 'firstUpdateKey',
-      jsBundleRemoteURL: 'http://192.168.1.117/module_0/bundle.zip',
-    }, (response: any) => {}, (error: any) => {});
+  public async componentDidMount() {
+    try {
+      const response = await HotUpdateModule.update(moduleName.toLowerCase(), 'http://192.168.1.117/api/checkForUpdates', {
+        moduleVersionKey: 'module_0_version',
+        firstUpdateKey: 'firstUpdateKey',
+        jsBundleRemoteURL: 'http://192.168.1.117/module_0/bundle.zip',
+      });
+    } catch (error) {
+
+    }
   }
 
   public render() {

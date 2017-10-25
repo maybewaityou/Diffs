@@ -10,7 +10,7 @@ import com.diffs.utilis.SharedPreferencesUtils;
 import com.diffs.vendor.hot_update.DownloadUtil;
 import com.diffs.vendor.hot_update.HotUpdate;
 import com.diffs.vendor.hot_update.HotUpdateConfig;
-import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -34,13 +34,13 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void update(String moduleName, String updateURL, ReadableMap params, Callback success, Callback failure) {
+    public void update(String moduleName, String updateURL, ReadableMap params, Promise promise) {
         NetworkUtils.sendRequest(updateURL, null, response -> {
             float newVersion = (float) response.optDouble(params.getString("moduleVersionKey"));
             float nativeVersion = SharedPreferencesUtils.getFloat(getCurrentActivity(), params.getString("moduleVersionKey"), 1);
             if (newVersion <= nativeVersion) {
                 Toast.makeText(getCurrentActivity(), "==== 已是最新版本 ====", Toast.LENGTH_LONG).show();
-                success.invoke(response.toString());
+                promise.resolve(response.toString());
                 return;
             }
 
@@ -59,7 +59,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                         SharedPreferencesUtils.putFloat(getCurrentActivity(), params.getString("moduleVersionKey"), newVersion);
                         ((ModuleContainer) getCurrentActivity()).reloadJSBundle(config);
                         Toast.makeText(getCurrentActivity(), "==== 更新成功 ====", Toast.LENGTH_LONG).show();
-                        success.invoke("{}");
+                        promise.resolve("{}");
                     });
                 }
 
@@ -75,7 +75,7 @@ public class HotUpdateModule extends ReactContextBaseJavaModule {
                     Looper.loop();
                 }
             });
-        }, error -> failure.invoke(error.toString()));
+        }, promise::reject);
     }
 
 }
