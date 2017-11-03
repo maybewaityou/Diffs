@@ -10,17 +10,6 @@ import { HomeContainer, homeRouterConfigs } from '../../../business-module/home/
 import { MeContainer, meRouterConfigs } from '../../../business-module/me/index';
 import { TrendingContainer, trendingRouterConfigs } from '../../../business-module/trending/index';
 
-const mapToConfigs = (containers: any) => {
-  const keys = Object.keys(containers);
-  const config: any = {};
-  keys.forEach((key) => {
-    config[key] = {
-      screen: containers[key],
-    };
-  });
-  return config;
-};
-
 export default {
   HomeContainer: {
     RootView: {
@@ -47,3 +36,14 @@ export default {
     ...mapToConfigs(meRouterConfigs),
   },
 };
+
+function mapToConfigs(containers: any) {
+  const keys = Object.keys(containers);
+  const config: any = {};
+  keys.forEach((key) => {
+    config[key] = {
+      screen: containers[key],
+    };
+  });
+  return config;
+}
