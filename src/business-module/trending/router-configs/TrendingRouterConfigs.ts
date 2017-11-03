@@ -8,7 +8,6 @@
 import { TrendingContainer } from '../container/index';
 
 export const trendingRouterConfigs = {
-  TrendingContainer: {
-    screen: TrendingContainer,
-  },
+  TrendingContainer,
+
 };

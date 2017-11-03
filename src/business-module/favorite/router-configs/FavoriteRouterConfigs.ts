@@ -8,7 +8,6 @@
 import { FavoriteContainer } from '../container/index';
 
 export const favoriteRouterConfigs = {
-  FavoriteContainer: {
-    screen: FavoriteContainer,
-  },
+  FavoriteContainer,
+
 };

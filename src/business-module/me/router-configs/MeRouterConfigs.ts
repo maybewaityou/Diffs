@@ -8,7 +8,6 @@
 import { MeContainer } from '../container/index';
 
 export const meRouterConfigs = {
-  MeContainer: {
-    screen: MeContainer,
-  },
+  MeContainer,
+
 };

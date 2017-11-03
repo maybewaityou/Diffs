@@ -10,29 +10,40 @@ import { HomeContainer, homeRouterConfigs } from '../../../business-module/home/
 import { MeContainer, meRouterConfigs } from '../../../business-module/me/index';
 import { TrendingContainer, trendingRouterConfigs } from '../../../business-module/trending/index';
 
+const mapToConfigs = (containers: any) => {
+  const keys = Object.keys(containers);
+  const config: any = {};
+  keys.forEach((key) => {
+    config[key] = {
+      screen: containers[key],
+    };
+  });
+  return config;
+};
+
 export default {
   HomeContainer: {
     RootView: {
       screen: HomeContainer,
     },
-    ...homeRouterConfigs,
+    ...mapToConfigs(homeRouterConfigs),
   },
   TrendingContainer: {
     RootView: {
       screen: TrendingContainer,
     },
-    ...trendingRouterConfigs,
+    ...mapToConfigs(trendingRouterConfigs),
   },
   FavoriteContainer: {
     RootView: {
       screen: FavoriteContainer,
     },
-    ...favoriteRouterConfigs,
+    ...mapToConfigs(favoriteRouterConfigs),
   },
   MeContainer: {
     RootView: {
       screen: MeContainer,
     },
-    ...meRouterConfigs,
+    ...mapToConfigs(meRouterConfigs),
   },
 };

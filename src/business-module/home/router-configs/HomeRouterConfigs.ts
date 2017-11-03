@@ -8,7 +8,6 @@
 import { HomeContainer } from '../container/index';
 
 export const homeRouterConfigs = {
-  HomeContainer: {
-    screen: HomeContainer,
-  },
+  HomeContainer,
+
 };
