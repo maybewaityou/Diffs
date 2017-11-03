@@ -109,9 +109,9 @@ public class HotUpdate {
     private static void merge(String patchStr, String bundle, HotUpdateConfig config) {
         if (patchStr.length() == 0 && new File(config.getJsBundleLocalPath()).exists()) return;
         // 3.初始化 dmp
-        diff_match_patch dmp = new diff_match_patch();
+        DiffMatchPatch dmp = new DiffMatchPatch();
         // 4.转换pat
-        LinkedList<diff_match_patch.Patch> patches = (LinkedList<diff_match_patch.Patch>) dmp.patch_fromText(patchStr);
+        LinkedList<DiffMatchPatch.Patch> patches = (LinkedList<DiffMatchPatch.Patch>) dmp.patch_fromText(patchStr);
         // 5.pat与bundle合并，生成新的bundle
         Object[] bundleArray = dmp.patch_apply(patches, bundle);
         // 6.保存新的bundle文件
