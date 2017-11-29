@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
 # 打包平台
-_platform=ios
+_platform=android
 
 # 默认打包文件
 _entryFile=index.js
